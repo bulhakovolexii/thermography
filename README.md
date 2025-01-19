@@ -1,4 +1,15 @@
-# thermography.online
+# Basics of Thermography
 
-This is now a simple static landing page that links to my authored thermography training course.
-In the future, I plan to make my own LMS project on React for this.
+An online course on the basics of thermography, available as an elective discipline for students of the National Technical University «Kharkiv Polytechnic Institute»
+
+TODO:
+
+- [ ] minification and inline css and js
+- [ ] SASS
+- [ ] image resizing and alignment with attr's
+- [ ] Youtube & MS Stream component
+- [ ] test form component
+- [ ] pagination between lectures
+- [ ] journal from onedrive xslx
+- [ ] markdown slides integration
+- [ ] light/dark mode switcher
