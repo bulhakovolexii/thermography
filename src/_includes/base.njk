@@ -3,8 +3,12 @@
     <head>
         {% include "head.njk" %}
     </head>
-    <body>
+    <body class="min-h-screen flex flex-col">
+        {% include "header.njk" %}
+
         {{ content | safe }}
-        {% if diagrams %}{% mermaid_js %}{% endif %}
+
+        {% include "footer.njk" %} {# scripts #} {% if diagrams %} {% mermaid_js
+        %} {% endif %}
     </body>
 </html>
