@@ -5,13 +5,15 @@ permalink: 404.html
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Oops! Not Found</title>
         {% set js %}
         {% include "./assets/js/redirect.js" %}
         {% endset %}
-        <script>{{ js | jsmin | safe }}</script>
+        <script>
+            {{ js | jsmin | safe }}
+        </script>
         <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
     </head>
     <body>
