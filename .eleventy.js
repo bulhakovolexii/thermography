@@ -18,6 +18,9 @@ import callout from 'markdown-it-obsidian-callouts'
 import anchor from 'markdown-it-anchor'
 import slugify from 'slugify'
 
+import htmlmin from 'html-minifier'
+import { minify } from 'terser'
+
 export default async function (eleventyConfig) {
     eleventyConfig.addPlugin(i18n, {
         defaultLanguage: 'uk',
@@ -28,7 +31,7 @@ export default async function (eleventyConfig) {
 
     eleventyConfig.addPlugin(mermaid, {
         mermaid_config: {
-            theme: 'dark',
+            theme: 'neutral',
             // themeVariables: { fontFamily: '' }, // TODO: add main font
         },
     })
@@ -62,6 +65,30 @@ export default async function (eleventyConfig) {
         .use(anchor, mdiAnchorOpts)
 
     eleventyConfig.setLibrary('md', md)
+
+    eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
+        if (outputPath.endsWith('.html')) {
+            let minified = htmlmin.minify(content, {
+                sueShortDoctypeL: true,
+                removeComments: true,
+                collapseWhitespace: true,
+            })
+
+            return minified
+        }
+
+        return content
+    })
+
+    eleventyConfig.addFilter('jsmin', async function (code) {
+        try {
+            const minified = await minify(code)
+            return minified.code
+        } catch (err) {
+            console.error('Terser error: ', err)
+            return code
+        }
+    })
 
     return {
         dir: {

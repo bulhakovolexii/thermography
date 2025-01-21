@@ -3,8 +3,12 @@
     "version": "1.0.0",
     "description": "An online course on the basics of thermography, available as an elective discipline for students of the National Technical University «Kharkiv Polytechnic Institute»",
     "scripts": {
-        "start": "eleventy --serve",
-        "builf": "eleventy"
+        "start": "npm-run-all -p dev:*",
+        "build": "run-s build:*",
+        "dev:11ty": "eleventy --serve",
+        "dev:css": "tailwindcss -i src/assets/css/tailwind.css -o dist/assets/css/style.css --watch --postcss",
+        "build:11ty": "eleventy",
+        "build:css": "tailwindcss -i src/assets/css/tailwind.css -o _site/assets/css/style.css --postcss"
     },
     "repository": {
         "type": "git",
@@ -21,7 +25,10 @@
         "@11ty/eleventy": "^3.0.0",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
         "@kevingimbel/eleventy-plugin-mermaid": "^2.2.1",
+        "autoprefixer": "^10.4.20",
+        "cssnano": "^7.0.6",
         "eleventy-plugin-toc": "^1.1.5",
+        "html-minifier": "^4.0.0",
         "markdown-it": "^14.1.0",
         "markdown-it-abbr": "^2.0.0",
         "markdown-it-anchor": "^9.2.0",
@@ -34,6 +41,10 @@
         "markdown-it-obsidian-callouts": "^0.3.1",
         "markdown-it-sub": "^2.0.0",
         "markdown-it-sup": "^2.0.0",
-        "slugify": "^1.6.6"
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.5.1",
+        "slugify": "^1.6.6",
+        "tailwindcss": "^3.4.17",
+        "terser": "^5.37.0"
     }
 }
