@@ -1,9 +1,11 @@
 import { EleventyI18nPlugin as i18n } from '@11ty/eleventy'
 import highlight from '@11ty/eleventy-plugin-syntaxhighlight'
 
+// 11ty plugins
 import toc from 'eleventy-plugin-toc'
 import mermaid from '@kevingimbel/eleventy-plugin-mermaid'
 
+// mardown-it & plugins
 import mdi from 'markdown-it'
 import { light as emoji } from 'markdown-it-emoji'
 import sub from 'markdown-it-sup'
@@ -18,6 +20,7 @@ import callout from 'markdown-it-obsidian-callouts'
 import anchor from 'markdown-it-anchor'
 import slugify from 'slugify'
 
+// html & js minification
 import htmlmin from 'html-minifier'
 import { minify } from 'terser'
 
@@ -25,6 +28,7 @@ export default async function (eleventyConfig) {
     eleventyConfig.addPlugin(i18n, {
         defaultLanguage: 'uk',
     })
+
     eleventyConfig.addPlugin(highlight)
 
     eleventyConfig.addPlugin(toc)
@@ -73,10 +77,8 @@ export default async function (eleventyConfig) {
                 removeComments: true,
                 collapseWhitespace: true,
             })
-
             return minified
         }
-
         return content
     })
 
