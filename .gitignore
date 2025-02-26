@@ -1,0 +1,5 @@
+node_modules
+
+# OS settings and caches
+.trash/
+.DS_Store
